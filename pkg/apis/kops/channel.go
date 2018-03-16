@@ -249,6 +249,7 @@ func FindKopsVersionSpec(versions []KopsVersionSpec, version semver.Version) *Ko
 type CloudProviderID string
 
 const CloudProviderAWS CloudProviderID = "aws"
+const CloudProviderAzure CloudProviderID = "azure"
 const CloudProviderBareMetal CloudProviderID = "baremetal"
 const CloudProviderGCE CloudProviderID = "gce"
 const CloudProviderDO CloudProviderID = "digitalocean"

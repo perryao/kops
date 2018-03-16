@@ -54,7 +54,7 @@ type ClusterSpec struct {
 	// both because this must be accessible to the cluster,
 	// and because it might be on a different cloud or storage system (etcd vs S3)
 	ConfigBase string `json:"configBase,omitempty"`
-	// The CloudProvider to use (aws or gce)
+	// The CloudProvider to use (aws, gce, or azure)
 	CloudProvider string `json:"cloudProvider,omitempty"`
 	// The version of kubernetes to install (optional, and can be a "spec" like stable)
 	KubernetesVersion string `json:"kubernetesVersion,omitempty"`

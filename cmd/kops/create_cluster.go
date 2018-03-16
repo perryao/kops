@@ -206,6 +206,19 @@ var (
           --project my-gce-project \
           --image "ubuntu-os-cloud/ubuntu-1604-xenial-v20170202" \
           --yes
+
+	# Create cluster in Azure
+	# This is an alpha feature
+				export KOPS_STATE_STORE=""
+				export ZONES=${ZONES:-""}
+				export KOPS_FEATURE_FLAGS=AlphaAllowAzure
+
+				kops create cluster kubernetes-k8s-azure.example.com
+				--zones $ZONES \
+				--master-zones $ZONES \
+				--node-count 3 \
+				--yes
+
 	# Create manifest for a cluster in AWS
 	kops create cluster --name=kubernetes-cluster.example.com \
 	--state=s3://kops-state-1234 --zones=eu-west-1a \
@@ -262,7 +275,7 @@ func NewCmdCreateCluster(f *util.Factory, out io.Writer) *cobra.Command {
 		cmd.Flags().StringVar(&options.ConfigBase, "config-base", options.ConfigBase, "A cluster-readable location where we mirror configuration information, separate from the state store.  Allows for a state store that is not accessible from the cluster.")
 	}
 
-	cmd.Flags().StringVar(&options.Cloud, "cloud", options.Cloud, "Cloud provider to use - gce, aws, vsphere")
+	cmd.Flags().StringVar(&options.Cloud, "cloud", options.Cloud, "Cloud provider to use - azure, gce, aws, vsphere")
 
 	cmd.Flags().StringSliceVar(&options.Zones, "zones", options.Zones, "Zones in which to run the cluster")
 	cmd.Flags().StringSliceVar(&options.MasterZones, "master-zones", options.MasterZones, "Zones in which to run masters (must be an odd number)")

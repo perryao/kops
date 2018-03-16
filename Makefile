@@ -199,6 +199,7 @@ check-builds-in-go19:
 .PHONY: codegen
 codegen: kops-gobindata
 	go install k8s.io/kops/upup/tools/generators/...
+	PATH=${GOPATH_1st}/bin:${PATH} go generate k8s.io/kops/upup/pkg/fi/cloudup/azuretasks
 	PATH=${GOPATH_1ST}/bin:${PATH} go generate k8s.io/kops/upup/pkg/fi/cloudup/awstasks
 	PATH=${GOPATH_1ST}/bin:${PATH} go generate k8s.io/kops/upup/pkg/fi/cloudup/gcetasks
 	PATH=${GOPATH_1ST}/bin:${PATH} go generate k8s.io/kops/upup/pkg/fi/cloudup/dotasks

@@ -74,6 +74,7 @@ const (
 var (
 	// AlphaAllowBareMetal is a feature flag that gates BareMetal support while it is alpha
 	AlphaAllowBareMetal = featureflag.New("AlphaAllowBareMetal", featureflag.Bool(false))
+	AlphaAllowAzure     = featureflag.New("AlphaAllowAzure", featureflag.Bool(false))
 	// AlphaAllowDO is a feature flag that gates DigitalOcean support while it is alpha
 	AlphaAllowDO = featureflag.New("AlphaAllowDO", featureflag.Bool(false))
 	// AlphaAllowGCE is a feature flag that gates GCE support while it is alpha

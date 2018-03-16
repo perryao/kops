@@ -213,6 +213,11 @@ func (t *TerraformTarget) Finish(taskMap map[string]fi.Task) error {
 			providerVSphere[k] = v
 		}
 		providersByName["vsphere"] = providerVSphere
+	} else if t.Cloud.ProviderID() == kops.CloudProviderAzure {
+		// TODO
+		providerAzure := make(map[string]interface{})
+		providerAzure["region"] = t.Region
+		providersByName["azure"] = providerAzure
 	}
 
 	outputVariables := make(map[string]interface{})
